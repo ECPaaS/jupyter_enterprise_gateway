@@ -1,0 +1,16 @@
+{{- if and .Values.deployment.enabled }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kernelspecs-pv
+  namespace: {{ .Release.Namespace }}
+spec:
+  capacity:
+    storage: {{ .Values.kernelspecsPv.size }}
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Delete
+  hostPath:
+    path: "{{ .Values.kernelspecsPv.hostPath }}"
+{{- end }}
+

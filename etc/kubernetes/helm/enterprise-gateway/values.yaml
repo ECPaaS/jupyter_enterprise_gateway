@@ -106,6 +106,8 @@ kernel:
     - spark_python_kubernetes
     - spark_scala_kubernetes
     - spark_python_operator
+    - python_pytorch_kubernetes
+    - python_pytorch_gpu_kubernetes
   # Default kernel name should be something from the allowedKernels
   defaultKernelName: python_kubernetes
 
@@ -120,10 +122,15 @@ nfs:
   # IP address of NFS server. Required if enabled.
   internalServerIPAddress:
 
+kernelspecsPv:
+  size: 1Gi
+  hostPath: "/home/mars/jupyter_enterprise_gateway/kernelspecs"
+
 kernelspecsPvc:
-  enabled: false
+  size: 1Gi
+  enabled: true
   # PVC name. Required if want mount kernelspecs without nfs. PVC should create in the same namespace before EG deployed.
-  name:
+  name: kernelspecs-pvc
 
 ingress:
   ingressClassName: # available since k8s 1.18. Depending on the ingress controller, you can use annotation as alternative
@@ -137,7 +144,6 @@ ingress:
   #   - secretName: "mysecret-name-tls"
   #     hosts:
   #       - myhost.example.com
-
 
 # Kernel Image Puller (daemonset)
 kip:
@@ -180,3 +186,5 @@ kip:
   #   requests:
   #     cpu: 1
   #     memory: 1Gi
+
+
