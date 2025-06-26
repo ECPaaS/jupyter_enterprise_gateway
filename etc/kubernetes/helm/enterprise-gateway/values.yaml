@@ -113,7 +113,7 @@ kernel:
 
 kernelspecs:
   # Optional custom data image containing kernelspecs to use.
-  image:
+  image: ecpaas-dockerhub.atan-networks.com.cn/jupyter_enterprise_gateway/kernelspecs-image:1.0.0
   # Kernelspecs image pull policy.
   imagePullPolicy: Always
 
@@ -122,15 +122,10 @@ nfs:
   # IP address of NFS server. Required if enabled.
   internalServerIPAddress:
 
-kernelspecsPv:
-  size: 1Gi
-  hostPath: "/home/mars/jupyter_enterprise_gateway/kernelspecs"
-
 kernelspecsPvc:
-  size: 1Gi
-  enabled: true
+  enabled: false
   # PVC name. Required if want mount kernelspecs without nfs. PVC should create in the same namespace before EG deployed.
-  name: kernelspecs-pvc
+  name:
 
 ingress:
   ingressClassName: # available since k8s 1.18. Depending on the ingress controller, you can use annotation as alternative
