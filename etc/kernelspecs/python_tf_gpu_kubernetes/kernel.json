@@ -5,12 +5,15 @@
     "process_proxy": {
       "class_name": "enterprise_gateway.services.processproxies.k8s.KubernetesProcessProxy",
       "config": {
-        "image_name": "elyra/kernel-tf-gpu-py:VERSION"
+        "image_name": "elyra/kernel-tf-gpu-py:dev"
       }
     },
     "debugger": true
   },
-  "env": {},
+  "env": {
+    "KERNEL_GPUS": "1",
+    "KERNEL_GPUS_LIMIT": "1"
+  },
   "argv": [
     "python",
     "/usr/local/share/jupyter/kernels/python_tf_gpu_kubernetes/scripts/launch_kubernetes.py",

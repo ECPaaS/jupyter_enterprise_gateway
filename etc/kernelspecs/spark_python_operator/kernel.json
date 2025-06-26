@@ -5,8 +5,8 @@
     "process_proxy": {
       "class_name": "enterprise_gateway.services.processproxies.spark_operator.SparkOperatorProcessProxy",
       "config": {
-        "image_name": "elyra/kernel-spark-py:VERSION",
-        "executor_image_name": "elyra/kernel-spark-py:VERSION"
+        "image_name": "elyra/kernel-spark-py:dev",
+        "executor_image_name": "elyra/kernel-spark-py:dev"
       }
     }
   },
