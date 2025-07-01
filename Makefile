@@ -83,6 +83,9 @@ kernelspecs:  kernelspecs_all kernelspecs_yarn kernelspecs_conductor kernelspecs
 kernelspecs_all kernelspecs_yarn kernelspecs_conductor kernelspecs_kubernetes kernelspecs_docker kernel_image_files:
 	make VERSION=$(VERSION) TAG=$(TAG) SPARK_VERSION=$(SPARK_VERSION) -C  etc $@
 
+kernelspecs-image:
+	docker build -f etc/docker/kernelspec-replacement/Dockerfile -t ecpaas-dockerhub.atan-networks.com.cn/jupyter_enterprise_gateway/kernelspecs-image:1.0.0 .
+
 test-install: dist test-install-wheel test-install-tar ## Install and minimally run EG with the wheel and tar distributions
 
 test-install-wheel:
